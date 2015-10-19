@@ -1,0 +1,53 @@
+<div class="angucomplete-holder" ng-class="{'angucomplete-dropdown-visible': showDropdown}">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <input id="{{id}}_value" name="{{inputName}}"
+                   ng-class="{'angucomplete-input-not-empty': notEmpty}"
+                   ng-model="searchStr"
+                   ng-disabled="disableInput"
+                   type="{{inputType}}"
+                   placeholder="{{placeholder}}"
+                   maxlength="{{maxlength}}"
+                   ng-focus="onFocusHandler()"
+                   class="{{inputClass}}"
+                   ng-focus="resetHideResults()"
+                   ng-blur="hideResults($event)"
+                   autocapitalize="off" autocorrect="off" autocomplete="off"
+                   ng-change="inputChangeHandler(searchStr)"/>
+            <button type="button" class="searchButton">
+                <img src="/img/search_icon.svg" class="searchImage"/>
+            </button>
+        </div>
+    </div>
+
+    <div id="{{id}}_dropdown" class="angucomplete-dropdown" ng-show="showDropdown">
+
+        <div class="angucomplete-searching" ng-show="searching" ng-bind="textSearching"></div>
+        <div class="angucomplete-searching" ng-show="!searching && (!results || results.length == 0)" ng-bind="textNoResults"></div>
+
+        <header ng-show="!searching && (!results || results.length > 0)">
+            <div class="row">
+                <div class="col-xs-1 angucomplete-col0"><div>&nbsp;</div></div>
+                <div class="col-xs-7 angucomplete-col1">Name</div>
+                <div class="col-xs-2 text-center angucomplete-col2">Reach</div>
+                <div class="col-xs-2 text-center angucomplete-col3">Trends</div>
+            </div>
+        </header>
+
+        <section class="row angucomplete-row" ng-repeat="result in results" ng-click="selectResult(result)" ng-mouseenter="hoverRow($index)" ng-class="{'angucomplete-selected-row': $index == currentIndex}">
+            <div ng-if="imageField" class="col-xs-1 text-right angucomplete-image-holder">
+                <img ng-if="result.image && result.image != ''" ng-src="/img/profiles/{{result.image}}.jpg" class="angucomplete-image"/>
+                <div ng-if="!result.image && result.image != ''" class="angucomplete-image-default"></div>
+            </div>
+            <!--<div class="angucomplete-title" ng-if="matchClass" ng-bind-html="result.title"></div>-->
+            <!--<div class="angucomplete-title" ng-if="!matchClass">{{ result.title }}</div>-->
+            <!--<div ng-if="matchClass && result.description && result.description != ''" class="angucomplete-description" ng-bind-html="result.description"></div>-->
+            <!--<div ng-if="!matchClass && result.description && result.description != ''" class="angucomplete-description">{{result.description}}</div>-->
+            <div class="col-xs-7 angucomplete-col1">{{result.originalObject.name}}</div>
+            <div class="col-xs-2 text-center angucomplete-col2">{{result.originalObject.reach | number: 2}}%</div>
+            <div class="col-xs-2 text-center angucomplete-col3">{{result.originalObject.trends | number: 0}}%</div>
+        </section>
+
+    </div>
+</div>

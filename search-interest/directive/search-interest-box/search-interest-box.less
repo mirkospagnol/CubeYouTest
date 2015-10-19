@@ -1,0 +1,91 @@
+#searchInterestBox {
+
+    //    variables
+    @border-color:  #008aaf;
+    @text1: #8f8f8f;
+    @text2: #505050;
+    @hover: #f2f9fb;
+    @trends-positive: #26a65b;
+    @trends-negative: #ef4836;
+    @background-section: #f2f2f2;
+    @background: #ffffff;
+
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid @border-color;
+
+    .items {
+        padding-top: 10px;
+        .item {
+            border: 1px solid @border-color;
+            border-radius: 2px;
+            height: 55px;
+            padding: 10px;
+
+            .deleteItem {
+                background-color: @trends-negative;
+                border: 1px solid @border-color;
+                @size: 14px;
+                border-radius: @size;
+                width: @size;
+                height: @size;
+                margin-top: 5px;
+            }
+        }
+    }
+
+
+
+    angucomplete-alt {
+        .angucomplete-holder {
+            input {
+                border: 1px solid @border-color;
+                border-radius: 0px;
+                color: @text1;
+            }
+        }
+
+        .searchButton {
+            position: absolute;
+            top: 0;
+            right: @grid-gutter-width/2;
+            border: 1px solid @border-color;
+            background-color: #ffffff;
+            width: @input-height-base;
+            height: @input-height-base;
+            .searchImage {
+                width: 18px;
+                height: 18px
+            }
+        }
+
+
+        .angucomplete-dropdown {
+
+            color: @text2;
+            border: 1px solid @border-color;
+
+            header {
+                    background-color: #f3f3f3;
+            }
+
+            .angucomplete-image-holder {
+                .angucomplete-image {
+                    @size: 28px;
+                    height: @size;
+                    width: @size;
+                    border-radius: @size;
+                    border: 1px solid #d3d3d3;
+                }
+            }
+            .angucomplete-col3 {
+
+            }
+
+        }
+
+
+
+    }
+
+}
